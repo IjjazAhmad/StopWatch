@@ -1,0 +1,31 @@
+@import '../../node_modules//bootstrap/scss/bootstrap.scss';
+
+
+.timer{
+    background-color: black;
+    min-height: 100vh;
+    color: white;
+    .timer-container1{
+        box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 238) 0px 0px 0px 15px;
+        width: 14rem;
+        height: 14rem;
+        margin: auto;
+        margin-top: 3rem;
+        padding: .5rem;
+        border-radius: 200px;
+        background-color: white;
+        .timer-container{
+            background-color: white;
+            color: black;
+            width: 13rem;
+            height: 13rem;
+            margin: auto;
+            border-radius: 200px;
+            padding-top: 3rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 40px;
+            font-weight: 600;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+        }
+    }
+}
