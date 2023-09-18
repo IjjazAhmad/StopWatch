@@ -1,48 +1,49 @@
 import React, { useEffect, useState } from 'react'
 
 export default function Timer() {
-    const [second, setSecond] = useState(0)
-    const [mint, setMint] = useState(0)
-    const [milisec, setMilisec] = useState(0)
+    const [milisec, setMilisec] = useState(0);
+    const [second, setSecond] = useState(0);
+    const [mint, setMint] = useState(0);
     const [time, setTime] = useState(null);
-
+  
     const handleStart = () => {
-        if (time === null) {
-            setTime(
-                setInterval(() => {
-                    setMilisec((prevMilisec) => prevMilisec + 1);
-                }, 1)
-            );
-        }
+      if (time === null) {
+        setTime(
+          setInterval(() => {
+            setMilisec((prevMilisec) => prevMilisec + 1);
+          }, 10)
+        );
+      }
     };
+  
     useEffect(() => {
-        return () => clearInterval(time);
+      return () => clearInterval(time); // Clear the interval using the reference to 'time'
     }, [time]);
-
+  
     const handleReset = () => {
-        clearInterval(time);
-        setTime(null);
+      clearInterval(time); // Clear the interval using the reference to 'time'
+      setTime(null);
+      setMilisec(0);
+      setMint(0);
+      setSecond(0);
+    };
+  
+    const handleStop = () => {
+      clearInterval(time); // Clear the interval using the reference to 'time'
+      setTime(null);
+    };
+  
+    useEffect(() => {
+      if (milisec === 99) {
+        setSecond((prevSecond) => prevSecond + 1);
         setMilisec(0);
-        setMint(0);
+      }
+      if (second === 59) {
+        setMint((prevMint) => prevMint + 1);
         setSecond(0);
-      };
-      const handleStop = () => {
-        clearInterval(time);
-        setTime(null);
-      };
+      }
+    }, [ milisec, second, mint]);
 
-      useEffect(() => {
-        if (milisec === 99) {
-          setSecond((prevSecond) => prevSecond + 1);
-          setMilisec(0);
-        }
-        if (second === 59) {
-          setMint((prevMint) => prevMint + 1);
-          setMilisec(0);
-          setSecond(0);
-        }
-        
-      }, [mint,second, milisec]);
     return (
         <>
             <div className="timer">
